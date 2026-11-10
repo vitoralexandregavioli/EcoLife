@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acompanhe seu progresso e suas conquistas sustentáveis no EcoLife.">
+  <title>Meu progresso | EcoLife</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { floresta: '#174D36', natureza: '#65A66A', suave: '#DDF0D7', creme: '#F5F4EA' },
+      fontFamily: { titulo: ['Poppins', 'sans-serif'], texto: ['Inter', 'sans-serif'] }
+    } } };
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="min-h-screen bg-creme font-texto text-slate-800 antialiased">
+  <header class="border-b border-floresta/10 bg-white/90">
+    <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label="Navegação principal">
+      <a class="flex items-center gap-2 font-titulo text-xl font-bold text-floresta" href="../index.html" aria-label="EcoLife, página inicial">
+        <i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i>
+        <span>EcoLife</span>
+      </a>
+      <div id="auth-menu" class="flex flex-wrap items-center gap-4 text-sm" aria-live="polite"></div>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-5 py-10 sm:py-14">
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-sm font-semibold text-natureza">Cada atitude conta</p>
+        <h1 class="mt-1 font-titulo text-3xl font-bold text-floresta sm:text-4xl">Meu progresso</h1>
+        <p class="mt-3 max-w-2xl leading-7 text-slate-600">Acompanhe os pontos, desafios e conquistas da sua jornada sustentável.</p>
+      </div>
+      <button id="botao-atualizar-progresso" type="button" class="inline-flex items-center gap-2 rounded-lg border border-floresta/20 bg-white px-3 py-2 text-sm font-semibold text-floresta hover:bg-suave disabled:cursor-wait disabled:opacity-60">
+        <i data-lucide="refresh-cw" class="h-4 w-4" aria-hidden="true"></i>
+        Atualizar
+      </button>
+    </div>
+
+    <p id="estado-progresso" class="mb-6 rounded-xl border border-floresta/10 bg-white p-5 text-sm text-slate-600" role="status" aria-live="polite">Carregando seu progresso...</p>
+    <p id="aviso-sem-registros" class="mb-6 hidden rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
+      Você ainda não registrou ações. <a class="font-semibold underline" href="registros.html">Criar seu primeiro registro</a> para começar a acompanhar o progresso.
+    </p>
+
+    <section class="grid gap-5 sm:grid-cols-3" aria-label="Resumo do progresso">
+      <article class="cartao-base">
+        <div class="flex items-center gap-3">
+          <span class="rounded-xl bg-suave p-3 text-floresta"><i data-lucide="zap" class="h-6 w-6" aria-hidden="true"></i></span>
+          <div><p class="text-sm text-slate-600">XP total</p><p id="xp-total" class="font-titulo text-2xl font-bold text-floresta">—</p></div>
+        </div>
+      </article>
+      <article class="cartao-base">
+        <div class="flex items-center gap-3">
+          <span class="rounded-xl bg-suave p-3 text-floresta"><i data-lucide="trophy" class="h-6 w-6" aria-hidden="true"></i></span>
+          <div><p class="text-sm text-slate-600">Desafios concluídos</p><p id="total-concluidos" class="font-titulo text-2xl font-bold text-floresta">—</p></div>
+        </div>
+      </article>
+      <article class="cartao-base">
+        <div class="flex items-center gap-3">
+          <span class="rounded-xl bg-amber-100 p-3 text-amber-800"><i data-lucide="clock-3" class="h-6 w-6" aria-hidden="true"></i></span>
+          <div><p class="text-sm text-slate-600">Desafios pendentes</p><p id="total-pendentes" class="font-titulo text-2xl font-bold text-floresta">—</p></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="cartao-base mt-6" aria-labelledby="titulo-nivel">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p class="text-sm text-slate-600">Seu nível atual</p>
+          <h2 id="titulo-nivel" class="mt-1 font-titulo text-2xl font-bold text-floresta">Carregando...</h2>
+        </div>
+        <p id="texto-proximo-nivel" class="text-sm font-medium text-slate-600" aria-live="polite"></p>
+      </div>
+      <div id="barra-nivel" class="mt-5 h-4 overflow-hidden rounded-full bg-slate-100" role="progressbar" aria-label="Progresso para o próximo nível" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="preenchimento-nivel" class="h-full rounded-full bg-natureza transition-all duration-500" style="width: 0%"></div>
+      </div>
+      <div class="mt-2 flex justify-between text-xs text-slate-500"><span id="xp-inicio-nivel">0 XP</span><span id="xp-fim-nivel">100 XP</span></div>
+    </section>
+
+    <section class="mt-10" aria-labelledby="titulo-conquistas">
+      <div class="mb-4">
+        <p class="text-sm font-semibold text-natureza">Marcos da sua jornada</p>
+        <h2 id="titulo-conquistas" class="font-titulo text-2xl font-bold text-floresta">Conquistas</h2>
+      </div>
+      <div id="lista-conquistas" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-live="polite"></div>
+    </section>
+
+    <section class="mt-10" aria-labelledby="titulo-historico">
+      <div class="mb-4">
+        <p class="text-sm font-semibold text-natureza">Suas últimas ações</p>
+        <h2 id="titulo-historico" class="font-titulo text-2xl font-bold text-floresta">Histórico concluído</h2>
+      </div>
+      <p id="estado-historico" class="rounded-xl border border-floresta/10 bg-white p-5 text-sm text-slate-600" role="status" aria-live="polite">Carregando histórico...</p>
+      <div id="lista-historico" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+  </main>
+
+  <footer class="mt-10 border-t border-floresta/10 bg-white/70">
+    <div class="mx-auto max-w-6xl px-5 py-6 text-sm text-slate-600">EcoLife · Pequenas atitudes, grandes mudanças.</div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/supabaseClient.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/progresso.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
