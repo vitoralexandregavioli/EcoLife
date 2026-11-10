@@ -56,13 +56,18 @@ function atualizarMenuAuth(sessao) {
     linkDesafios.href = rotaPagina('desafios.html');
     linkDesafios.textContent = 'Desafios';
 
+    const linkRegistros = document.createElement('a');
+    linkRegistros.className = 'font-semibold text-floresta hover:underline';
+    linkRegistros.href = rotaPagina('registros.html');
+    linkRegistros.textContent = 'Registros';
+
     const botaoSair = document.createElement('button');
     botaoSair.type = 'button';
     botaoSair.className = 'rounded-lg border border-floresta px-3 py-2 font-semibold text-floresta hover:bg-suave';
     botaoSair.textContent = 'Sair';
     botaoSair.addEventListener('click', sair);
 
-    menu.append(nomeUsuario, linkProgresso, linkCategorias, linkDesafios, botaoSair);
+    menu.append(nomeUsuario, linkProgresso, linkCategorias, linkDesafios, linkRegistros, botaoSair);
   } else {
     const base = window.location.pathname.includes('/pages/') ? '' : 'pages/';
     const linkEntrar = document.createElement('a');
