@@ -41,7 +41,10 @@
         <i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i>
         <span>EcoLife</span>
       </a>
-      <span class="text-sm text-slate-600">Pequenas atitudes, grandes mudanças.</span>
+      <div id="auth-menu" class="flex items-center gap-4 text-sm" aria-live="polite">
+        <a class="font-semibold text-floresta hover:underline" href="pages/login.html">Entrar</a>
+        <a class="rounded-lg bg-natureza px-3 py-2 font-semibold text-white hover:bg-floresta" href="pages/cadastro.html">Criar conta</a>
+      </div>
     </nav>
   </header>
 
@@ -83,7 +86,10 @@
   <!-- Ícones e alertas ficam disponíveis para as próximas etapas. -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/ui.js"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
