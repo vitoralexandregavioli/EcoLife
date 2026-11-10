@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EcoLife: pequenas atitudes, grandes mudanças. Aprenda e acompanhe hábitos sustentáveis.">
+  <meta name="theme-color" content="#F5F4EA">
+  <title>EcoLife | Pequenas atitudes, grandes mudanças</title>
+
+  <!-- Fontes do projeto: Poppins para títulos e Inter para os textos. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind é carregado por CDN para funcionar sem etapa de build. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            floresta: '#174D36',
+            natureza: '#65A66A',
+            suave: '#DDF0D7',
+            creme: '#F5F4EA'
+          },
+          fontFamily: {
+            titulo: ['Poppins', 'sans-serif'],
+            texto: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen bg-creme font-texto text-slate-800 antialiased">
+  <header class="border-b border-floresta/10 bg-white/90">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4" aria-label="Navegação principal">
+      <a class="flex items-center gap-2 font-titulo text-xl font-bold text-floresta" href="index.html" aria-label="EcoLife, página inicial">
+        <i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i>
+        <span>EcoLife</span>
+      </a>
+      <span class="text-sm text-slate-600">Pequenas atitudes, grandes mudanças.</span>
+    </nav>
+  </header>
+
+  <main class="mx-auto flex max-w-6xl flex-col items-start px-5 py-16 sm:py-24">
+    <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-suave px-4 py-2 text-sm font-semibold text-floresta">
+      <i data-lucide="sprout" class="h-4 w-4" aria-hidden="true"></i>
+      Sustentabilidade começa no dia a dia
+    </p>
+    <h1 class="max-w-3xl font-titulo text-4xl font-bold leading-tight text-floresta sm:text-6xl">Um futuro mais verde começa com você.</h1>
+    <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">O EcoLife está sendo preparado para ajudar você a conhecer e acompanhar pequenas ações sustentáveis. Cada atitude pode fazer diferença.</p>
+    <a class="mt-8 inline-flex items-center gap-2 rounded-xl bg-natureza px-6 py-3 font-semibold text-white transition hover:bg-floresta focus:outline-none focus:ring-4 focus:ring-natureza/30" href="#sobre">
+      Conheça o projeto
+      <i data-lucide="arrow-down" class="h-4 w-4" aria-hidden="true"></i>
+    </a>
+
+    <section id="sobre" class="mt-20 grid w-full gap-6 sm:grid-cols-3" aria-label="Pilares do EcoLife">
+      <article class="cartao-base">
+        <i data-lucide="droplets" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
+        <h2 class="font-titulo text-lg font-semibold text-floresta">Cuide dos recursos</h2>
+        <p class="mt-2 text-sm leading-6 text-slate-600">Aprenda maneiras simples de economizar água e energia.</p>
+      </article>
+      <article class="cartao-base">
+        <i data-lucide="recycle" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
+        <h2 class="font-titulo text-lg font-semibold text-floresta">Faça escolhas conscientes</h2>
+        <p class="mt-2 text-sm leading-6 text-slate-600">Descubra práticas para reduzir resíduos e consumir melhor.</p>
+      </article>
+      <article class="cartao-base">
+        <i data-lucide="trees" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
+        <h2 class="font-titulo text-lg font-semibold text-floresta">Acompanhe sua jornada</h2>
+        <p class="mt-2 text-sm leading-6 text-slate-600">Em breve, registre desafios e veja seu progresso sustentável.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="border-t border-floresta/10 bg-white/70">
+    <div class="mx-auto max-w-6xl px-5 py-6 text-sm text-slate-600">EcoLife · Pequenas atitudes, grandes mudanças.</div>
+  </footer>
+
+  <!-- Ícones e alertas ficam disponíveis para as próximas etapas. -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

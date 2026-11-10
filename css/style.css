@@ -1,0 +1,27 @@
+/* Ajustes pequenos que complementam as classes utilitárias do Tailwind. */
+:root {
+  color-scheme: light;
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+/* Cartão simples para manter os blocos da página consistentes. */
+.cartao-base {
+  border: 1px solid rgb(23 77 54 / 10%);
+  border-radius: 1rem;
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgb(23 77 54 / 5%);
+}
+
+:focus-visible {
+  outline: 3px solid #65a66a;
+  outline-offset: 3px;
+}
