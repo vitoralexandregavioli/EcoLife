@@ -46,13 +46,18 @@ function atualizarMenuAuth(sessao) {
     linkProgresso.href = rotaPagina('progresso.html');
     linkProgresso.textContent = 'Meu progresso';
 
+    const linkCategorias = document.createElement('a');
+    linkCategorias.className = 'font-semibold text-floresta hover:underline';
+    linkCategorias.href = rotaPagina('categorias.html');
+    linkCategorias.textContent = 'Categorias';
+
     const botaoSair = document.createElement('button');
     botaoSair.type = 'button';
     botaoSair.className = 'rounded-lg border border-floresta px-3 py-2 font-semibold text-floresta hover:bg-suave';
     botaoSair.textContent = 'Sair';
     botaoSair.addEventListener('click', sair);
 
-    menu.append(nomeUsuario, linkProgresso, botaoSair);
+    menu.append(nomeUsuario, linkProgresso, linkCategorias, botaoSair);
   } else {
     const base = window.location.pathname.includes('/pages/') ? '' : 'pages/';
     const linkEntrar = document.createElement('a');
