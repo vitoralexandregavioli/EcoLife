@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore imagens de florestas, oceanos, animais e biodiversidade.">
+  <title>Galeria ambiental | EcoLife</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { floresta: '#174D36', natureza: '#65A66A', suave: '#DDF0D7', creme: '#F5F4EA' },
+      fontFamily: { titulo: ['Poppins', 'sans-serif'], texto: ['Inter', 'sans-serif'] }
+    } } };
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="min-h-screen bg-creme font-texto text-slate-800 antialiased">
+  <header class="border-b border-floresta/10 bg-white/95">
+    <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label="Navegação principal">
+      <a class="flex items-center gap-2 font-titulo text-xl font-bold text-floresta" href="../index.html" aria-label="EcoLife, página inicial"><i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i><span>EcoLife</span></a>
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <a class="font-semibold text-floresta hover:underline" href="../index.html">Início</a>
+        <a class="font-semibold text-floresta hover:underline" href="dicas.html">Dicas</a>
+        <a class="font-semibold text-floresta hover:underline" href="contato.html">Contato</a>
+        <div id="auth-menu" class="flex flex-wrap items-center gap-3" aria-live="polite"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bg-floresta px-5 py-14 text-white sm:py-20">
+      <div class="mx-auto max-w-6xl">
+        <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold"><i data-lucide="images" class="h-4 w-4" aria-hidden="true"></i>Natureza em foco</p>
+        <h1 class="mt-5 max-w-3xl font-titulo text-4xl font-bold sm:text-5xl">Galeria ambiental</h1>
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-white/85">Florestas, oceanos e espécies que fazem parte da diversidade da vida. Selecione uma imagem para ampliar.</p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-5 py-12" aria-labelledby="titulo-galeria">
+      <div class="mb-6">
+        <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Explore os ambientes</p>
+        <h2 id="titulo-galeria" class="mt-2 font-titulo text-2xl font-bold text-floresta">Imagens da natureza</h2>
+      </div>
+      <div id="grade-galeria" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <section class="bg-white py-12" aria-labelledby="titulo-curiosidades">
+      <div class="mx-auto max-w-6xl px-5">
+        <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Além das imagens</p>
+        <h2 id="titulo-curiosidades" class="mt-2 font-titulo text-2xl font-bold text-floresta">Curiosidades ambientais</h2>
+        <div class="mt-6 grid gap-5 md:grid-cols-3">
+          <article class="rounded-2xl border border-floresta/10 bg-creme p-5"><i data-lucide="trees" class="mb-3 h-6 w-6 text-natureza" aria-hidden="true"></i><h3 class="font-titulo font-semibold text-floresta">Florestas</h3><p class="mt-2 text-sm leading-6 text-slate-600">Florestas oferecem habitat para muitas espécies e ajudam a proteger o solo e os ciclos naturais.</p></article>
+          <article class="rounded-2xl border border-floresta/10 bg-creme p-5"><i data-lucide="waves" class="mb-3 h-6 w-6 text-natureza" aria-hidden="true"></i><h3 class="font-titulo font-semibold text-floresta">Oceanos</h3><p class="mt-2 text-sm leading-6 text-slate-600">Oceanos conectam ambientes e abrigam uma grande variedade de formas de vida.</p></article>
+          <article class="rounded-2xl border border-floresta/10 bg-creme p-5"><i data-lucide="bug" class="mb-3 h-6 w-6 text-natureza" aria-hidden="true"></i><h3 class="font-titulo font-semibold text-floresta">Biodiversidade</h3><p class="mt-2 text-sm leading-6 text-slate-600">Biodiversidade inclui a variedade de espécies, genes e ecossistemas existentes no planeta.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="modal-galeria" class="max-h-[90vh] w-[min(92vw,60rem)] max-w-none overflow-auto rounded-2xl border-0 bg-white p-0 shadow-2xl backdrop:bg-floresta/80" aria-labelledby="modal-titulo">
+    <div class="flex items-center justify-between gap-4 border-b border-slate-200 px-5 py-4">
+      <h2 id="modal-titulo" class="font-titulo text-lg font-semibold text-floresta"></h2>
+      <button id="fechar-modal-galeria" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-floresta hover:bg-suave focus:outline-none focus:ring-2 focus:ring-natureza" aria-label="Fechar imagem ampliada">
+        <i data-lucide="x" class="h-5 w-5" aria-hidden="true"></i>
+      </button>
+    </div>
+    <img id="imagem-ampliada" class="max-h-[75vh] w-full bg-slate-100 object-contain" src="" alt="">
+    <p id="modal-descricao" class="px-5 py-4 text-sm leading-6 text-slate-600"></p>
+  </dialog>
+
+  <footer class="border-t border-floresta/10 bg-white">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-7 sm:flex-row sm:items-center sm:justify-between">
+      <a class="font-titulo font-bold text-floresta" href="../index.html">EcoLife</a><p class="text-sm text-slate-600">Pequenas atitudes, grandes mudanças.</p><a class="text-sm font-semibold text-floresta underline" href="dicas.html">Ver dicas sustentáveis</a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/supabaseClient.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/galeria.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
