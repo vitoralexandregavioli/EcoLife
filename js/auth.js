@@ -35,6 +35,10 @@ function atualizarMenuAuth(sessao) {
   if (!menu) return;
 
   menu.replaceChildren();
+  document.querySelectorAll('[data-cta-jornada]').forEach((chamada) => {
+    chamada.href = sessao?.user ? rotaPagina('progresso.html') : rotaPagina('cadastro.html');
+  });
+
   if (sessao?.user) {
     const nome = sessao.user.user_metadata?.display_name || sessao.user.email || 'Minha conta';
     const nomeUsuario = document.createElement('span');

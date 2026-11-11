@@ -3,87 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EcoLife: pequenas atitudes, grandes mudanças. Aprenda e acompanhe hábitos sustentáveis.">
+  <meta name="description" content="EcoLife: aprenda práticas sustentáveis e transforme pequenas atitudes em grandes mudanças.">
   <meta name="theme-color" content="#F5F4EA">
   <title>EcoLife | Pequenas atitudes, grandes mudanças</title>
-
-  <!-- Fontes do projeto: Poppins para títulos e Inter para os textos. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind é carregado por CDN para funcionar sem etapa de build. -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            floresta: '#174D36',
-            natureza: '#65A66A',
-            suave: '#DDF0D7',
-            creme: '#F5F4EA'
-          },
-          fontFamily: {
-            titulo: ['Poppins', 'sans-serif'],
-            texto: ['Inter', 'sans-serif']
-          }
-        }
-      }
-    };
+    tailwind.config = { theme: { extend: {
+      colors: { floresta: '#174D36', natureza: '#65A66A', suave: '#DDF0D7', creme: '#F5F4EA' },
+      fontFamily: { titulo: ['Poppins', 'sans-serif'], texto: ['Inter', 'sans-serif'] }
+    } } };
   </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="min-h-screen bg-creme font-texto text-slate-800 antialiased">
-  <header class="border-b border-floresta/10 bg-white/90">
-    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4" aria-label="Navegação principal">
+  <header class="border-b border-floresta/10 bg-white/95">
+    <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label="Navegação principal">
       <a class="flex items-center gap-2 font-titulo text-xl font-bold text-floresta" href="index.html" aria-label="EcoLife, página inicial">
-        <i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i>
-        <span>EcoLife</span>
+        <i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i><span>EcoLife</span>
       </a>
-      <div id="auth-menu" class="flex flex-wrap items-center gap-4 text-sm" aria-live="polite">
-        <a class="font-semibold text-floresta hover:underline" href="pages/login.html">Entrar</a>
-        <a class="rounded-lg bg-natureza px-3 py-2 font-semibold text-white hover:bg-floresta" href="pages/cadastro.html">Criar conta</a>
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <a class="font-semibold text-floresta hover:underline" href="#sobre">Sobre</a>
+        <a class="font-semibold text-floresta hover:underline" href="pages/reciclagem.html">Reciclagem</a>
+        <a class="font-semibold text-floresta hover:underline" href="pages/calculadora.html">Calculadora</a>
+        <div id="auth-menu" class="flex flex-wrap items-center gap-3" aria-live="polite">
+          <a class="font-semibold text-floresta hover:underline" href="pages/login.html">Entrar</a>
+          <a class="rounded-lg bg-natureza px-3 py-2 font-semibold text-white hover:bg-floresta" href="pages/cadastro.html">Criar conta</a>
+        </div>
       </div>
     </nav>
   </header>
 
-  <main class="mx-auto flex max-w-6xl flex-col items-start px-5 py-16 sm:py-24">
-    <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-suave px-4 py-2 text-sm font-semibold text-floresta">
-      <i data-lucide="sprout" class="h-4 w-4" aria-hidden="true"></i>
-      Sustentabilidade começa no dia a dia
-    </p>
-    <h1 class="max-w-3xl font-titulo text-4xl font-bold leading-tight text-floresta sm:text-6xl">Um futuro mais verde começa com você.</h1>
-    <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">O EcoLife está sendo preparado para ajudar você a conhecer e acompanhar pequenas ações sustentáveis. Cada atitude pode fazer diferença.</p>
-    <a class="mt-8 inline-flex items-center gap-2 rounded-xl bg-natureza px-6 py-3 font-semibold text-white transition hover:bg-floresta focus:outline-none focus:ring-4 focus:ring-natureza/30" href="#sobre">
-      Conheça o projeto
-      <i data-lucide="arrow-down" class="h-4 w-4" aria-hidden="true"></i>
-    </a>
+  <main>
+    <section class="relative isolate overflow-hidden bg-floresta">
+      <img class="absolute inset-0 -z-20 h-full w-full object-cover" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=2000&amp;q=85" alt="Luz do sol atravessando uma floresta verde">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-floresta/95 via-floresta/75 to-floresta/25"></div>
+      <div class="mx-auto flex min-h-[34rem] max-w-7xl items-center px-5 py-16 sm:min-h-[40rem]">
+        <div class="max-w-2xl text-white">
+          <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur">
+            <i data-lucide="sprout" class="h-4 w-4" aria-hidden="true"></i> Sustentabilidade começa no dia a dia
+          </p>
+          <h1 class="font-titulo text-4xl font-bold leading-tight sm:text-6xl">Pequenas atitudes,<br class="hidden sm:block"> grandes mudanças.</h1>
+          <p class="mt-6 max-w-xl text-lg leading-8 text-white/90">Descubra práticas mais sustentáveis, assuma desafios e acompanhe o impacto positivo dos seus hábitos.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a data-cta-jornada class="inline-flex items-center gap-2 rounded-xl bg-natureza px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-floresta focus:outline-none focus:ring-4 focus:ring-white/40" href="pages/cadastro.html">
+              Comece sua jornada <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i>
+            </a>
+            <a class="inline-flex items-center gap-2 rounded-xl border border-white/60 px-6 py-3 font-semibold text-white transition hover:bg-white/10" href="#sobre">Conheça o projeto</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section id="sobre" class="mt-20 grid w-full gap-6 sm:grid-cols-3" aria-label="Pilares do EcoLife">
-      <article class="cartao-base">
-        <i data-lucide="droplets" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
-        <h2 class="font-titulo text-lg font-semibold text-floresta">Cuide dos recursos</h2>
-        <p class="mt-2 text-sm leading-6 text-slate-600">Aprenda maneiras simples de economizar água e energia.</p>
-      </article>
-      <article class="cartao-base">
-        <i data-lucide="recycle" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
-        <h2 class="font-titulo text-lg font-semibold text-floresta">Faça escolhas conscientes</h2>
-        <p class="mt-2 text-sm leading-6 text-slate-600">Descubra práticas para reduzir resíduos e consumir melhor.</p>
-      </article>
-      <article class="cartao-base">
-        <i data-lucide="trees" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
-        <h2 class="font-titulo text-lg font-semibold text-floresta">Acompanhe sua jornada</h2>
-        <p class="mt-2 text-sm leading-6 text-slate-600">Em breve, registre desafios e veja seu progresso sustentável.</p>
-      </article>
+    <section id="sobre" class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-[0.8fr_1.2fr] md:py-24">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Por que EcoLife?</p>
+        <h2 class="mt-3 font-titulo text-3xl font-bold leading-tight text-floresta sm:text-4xl">Um começo simples para uma vida mais sustentável.</h2>
+      </div>
+      <div class="space-y-5 text-lg leading-8 text-slate-600">
+        <p>Muita gente quer adotar hábitos sustentáveis, mas não sabe por onde começar ou como manter a motivação. O EcoLife reúne informação prática e desafios para ajudar a transformar intenção em ação.</p>
+        <p>Aprenda sobre reciclagem e consumo consciente, estime alguns impactos do seu dia a dia e, ao entrar na plataforma, registre ações e acompanhe seu progresso.</p>
+      </div>
+    </section>
+
+    <section class="bg-white py-16 md:py-20" aria-labelledby="titulo-funcionalidades">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="mb-8 max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Explore</p>
+          <h2 id="titulo-funcionalidades" class="mt-2 font-titulo text-3xl font-bold text-floresta">Ferramentas para sua jornada</h2>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <a class="cartao-base grupo transition hover:-translate-y-1 hover:shadow-lg" href="pages/reciclagem.html">
+            <i data-lucide="recycle" class="mb-5 h-8 w-8 text-natureza" aria-hidden="true"></i>
+            <h3 class="font-titulo text-lg font-semibold text-floresta">Guia de reciclagem</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Encontre o destino correto dos resíduos e teste seus conhecimentos.</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-floresta">Explorar <i data-lucide="arrow-up-right" class="h-4 w-4" aria-hidden="true"></i></span>
+          </a>
+          <a class="cartao-base transition hover:-translate-y-1 hover:shadow-lg" href="pages/calculadora.html">
+            <i data-lucide="calculator" class="mb-5 h-8 w-8 text-natureza" aria-hidden="true"></i>
+            <h3 class="font-titulo text-lg font-semibold text-floresta">Calculadora sustentável</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Faça uma estimativa educativa sobre transporte, energia e reciclagem.</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-floresta">Calcular <i data-lucide="arrow-up-right" class="h-4 w-4" aria-hidden="true"></i></span>
+          </a>
+          <a class="cartao-base transition hover:-translate-y-1 hover:shadow-lg" href="pages/desafios.html">
+            <i data-lucide="target" class="mb-5 h-8 w-8 text-natureza" aria-hidden="true"></i>
+            <h3 class="font-titulo text-lg font-semibold text-floresta">Desafios sustentáveis</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Organize ações em desafios e defina pontos para cada conquista.</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-floresta">Ver desafios <i data-lucide="arrow-up-right" class="h-4 w-4" aria-hidden="true"></i></span>
+          </a>
+          <a class="cartao-base transition hover:-translate-y-1 hover:shadow-lg" href="pages/progresso.html">
+            <i data-lucide="trophy" class="mb-5 h-8 w-8 text-natureza" aria-hidden="true"></i>
+            <h3 class="font-titulo text-lg font-semibold text-floresta">Meu progresso</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Acompanhe XP, níveis, ações concluídas e conquistas.</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-floresta">Acompanhar <i data-lucide="arrow-up-right" class="h-4 w-4" aria-hidden="true"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-5 py-16 md:py-20" aria-labelledby="titulo-destaques">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Ideias para começar</p>
+          <h2 id="titulo-destaques" class="mt-2 font-titulo text-3xl font-bold text-floresta">Desafios em destaque</h2>
+        </div>
+        <a class="font-semibold text-floresta underline" href="pages/cadastro.html">Participe do EcoLife</a>
+      </div>
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="cartao-base">
+          <span class="mb-4 inline-flex rounded-xl bg-suave p-3 text-floresta"><i data-lucide="droplets" class="h-6 w-6" aria-hidden="true"></i></span>
+          <h3 class="font-titulo text-lg font-semibold text-floresta">Economizar água</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Reduza o tempo do banho e feche a torneira quando não estiver usando.</p>
+          <p class="mt-4 text-sm font-bold text-natureza">50 XP · Água</p>
+        </article>
+        <article class="cartao-base">
+          <span class="mb-4 inline-flex rounded-xl bg-suave p-3 text-floresta"><i data-lucide="recycle" class="h-6 w-6" aria-hidden="true"></i></span>
+          <h3 class="font-titulo text-lg font-semibold text-floresta">Separar recicláveis</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Separe materiais limpos e secos conforme a coleta disponível na sua região.</p>
+          <p class="mt-4 text-sm font-bold text-natureza">40 XP · Reciclagem</p>
+        </article>
+        <article class="cartao-base">
+          <span class="mb-4 inline-flex rounded-xl bg-suave p-3 text-floresta"><i data-lucide="tree-pine" class="h-6 w-6" aria-hidden="true"></i></span>
+          <h3 class="font-titulo text-lg font-semibold text-floresta">Plantar uma muda</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Escolha uma espécie adequada ao espaço e à sua região e cuide dela.</p>
+          <p class="mt-4 text-sm font-bold text-natureza">100 XP · Natureza</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bg-suave/60 py-16 md:py-20" aria-labelledby="titulo-curiosidades">
+      <div class="mx-auto max-w-7xl px-5">
+        <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Você sabia?</p>
+        <h2 id="titulo-curiosidades" class="mt-2 font-titulo text-3xl font-bold text-floresta">Pequenas descobertas, novas atitudes</h2>
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          <article class="rounded-2xl bg-white p-6">
+            <i data-lucide="leaf" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
+            <h3 class="font-titulo font-semibold text-floresta">Recicláveis limpos ajudam</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Esvaziar e, quando necessário, enxaguar embalagens ajuda a evitar que resíduos contaminem outros materiais.</p>
+          </article>
+          <article class="rounded-2xl bg-white p-6">
+            <i data-lucide="apple" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
+            <h3 class="font-titulo font-semibold text-floresta">Orgânicos podem virar composto</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Restos de frutas e verduras podem ser compostados e transformados em composto para o solo.</p>
+          </article>
+          <article class="rounded-2xl bg-white p-6">
+            <i data-lucide="shopping-bag" class="mb-4 h-7 w-7 text-natureza" aria-hidden="true"></i>
+            <h3 class="font-titulo font-semibold text-floresta">Reutilizar evita descartes</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Uma garrafa reutilizável ou uma sacola durável pode substituir itens descartáveis em várias ocasiões.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-5 py-16 md:py-20">
+      <div class="overflow-hidden rounded-3xl bg-floresta px-6 py-10 text-white sm:px-12 sm:py-14">
+        <div class="flex flex-col items-start justify-between gap-7 md:flex-row md:items-center">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-wider text-suave">Sua jornada começa agora</p>
+            <h2 class="mt-2 font-titulo text-3xl font-bold">Uma atitude de cada vez.</h2>
+            <p class="mt-3 leading-7 text-white/85">Crie sua conta para registrar desafios sustentáveis e acompanhar seu progresso.</p>
+          </div>
+          <a data-cta-jornada class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-floresta transition hover:bg-suave" href="pages/cadastro.html">Comece sua jornada <i data-lucide="arrow-right" class="h-4 w-4" aria-hidden="true"></i></a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="border-t border-floresta/10 bg-white/70">
-    <div class="mx-auto max-w-6xl px-5 py-6 text-sm text-slate-600">EcoLife · Pequenas atitudes, grandes mudanças.</div>
+  <footer class="border-t border-floresta/10 bg-white">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 sm:flex-row sm:items-center sm:justify-between">
+      <a class="flex items-center gap-2 font-titulo font-bold text-floresta" href="index.html"><i data-lucide="leaf" class="h-5 w-5" aria-hidden="true"></i>EcoLife</a>
+      <p class="text-sm text-slate-600">Pequenas atitudes, grandes mudanças.</p>
+      <div class="flex gap-4 text-sm font-medium text-floresta"><a href="pages/reciclagem.html">Reciclagem</a><a href="pages/calculadora.html">Calculadora</a></div>
+    </div>
   </footer>
 
-  <!-- Ícones e alertas ficam disponíveis para as próximas etapas. -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

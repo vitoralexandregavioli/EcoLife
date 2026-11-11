@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estime de forma educativa impactos de transporte, energia e reciclagem.">
+  <title>Calculadora sustentável | EcoLife</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { floresta: '#174D36', natureza: '#65A66A', suave: '#DDF0D7', creme: '#F5F4EA' },
+      fontFamily: { titulo: ['Poppins', 'sans-serif'], texto: ['Inter', 'sans-serif'] }
+    } } };
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="min-h-screen bg-creme font-texto text-slate-800 antialiased">
+  <header class="border-b border-floresta/10 bg-white/95">
+    <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label="Navegação principal">
+      <a class="flex items-center gap-2 font-titulo text-xl font-bold text-floresta" href="../index.html" aria-label="EcoLife, página inicial"><i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i><span>EcoLife</span></a>
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <a class="font-semibold text-floresta hover:underline" href="../index.html">Início</a>
+        <a class="font-semibold text-floresta hover:underline" href="reciclagem.html">Reciclagem</a>
+        <div id="auth-menu" class="flex flex-wrap items-center gap-3" aria-live="polite"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bg-floresta px-5 py-14 text-white sm:py-20">
+      <div class="mx-auto max-w-6xl">
+        <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold"><i data-lucide="calculator" class="h-4 w-4" aria-hidden="true"></i>Uma estimativa para refletir</p>
+        <h1 class="mt-5 max-w-3xl font-titulo text-4xl font-bold sm:text-5xl">Calculadora sustentável</h1>
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-white/85">Informe algumas ações do seu mês para ver uma estimativa educativa e receber ideias personalizadas.</p>
+      </div>
+    </section>
+
+    <div class="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <section class="cartao-base h-fit" aria-labelledby="titulo-formulario">
+        <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Seus hábitos</p>
+        <h2 id="titulo-formulario" class="mt-2 font-titulo text-2xl font-bold text-floresta">Faça sua estimativa</h2>
+        <form id="form-calculadora" class="mt-6 space-y-5" novalidate>
+          <div>
+            <label for="km-carro" class="mb-1 block text-sm font-semibold">Quilômetros de carro evitados por semana</label>
+            <p id="ajuda-transporte" class="mb-2 text-xs leading-5 text-slate-500">Considere trajetos que você fez a pé, de bicicleta ou usando transporte coletivo no lugar do carro.</p>
+            <div class="relative">
+              <input id="km-carro" name="km_carro" type="number" min="0" max="1000" step="0.1" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-3 pr-14 focus:border-natureza focus:outline-none" aria-describedby="ajuda-transporte" placeholder="Ex.: 12">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-500">km/sem</span>
+            </div>
+          </div>
+          <div>
+            <label for="kwh-poupados" class="mb-1 block text-sm font-semibold">Energia economizada por mês</label>
+            <p id="ajuda-energia" class="mb-2 text-xs leading-5 text-slate-500">Use uma estimativa de kWh economizados com hábitos ou equipamentos mais eficientes.</p>
+            <div class="relative">
+              <input id="kwh-poupados" name="kwh_poupados" type="number" min="0" max="10000" step="0.1" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-3 pr-14 focus:border-natureza focus:outline-none" aria-describedby="ajuda-energia" placeholder="Ex.: 15">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-500">kWh/mês</span>
+            </div>
+          </div>
+          <div>
+            <label for="kg-reciclados" class="mb-1 block text-sm font-semibold">Materiais recicláveis separados por mês</label>
+            <p id="ajuda-reciclagem" class="mb-2 text-xs leading-5 text-slate-500">Informe aproximadamente o peso dos materiais destinados à coleta seletiva.</p>
+            <div class="relative">
+              <input id="kg-reciclados" name="kg_reciclados" type="number" min="0" max="10000" step="0.1" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-3 pr-14 focus:border-natureza focus:outline-none" aria-describedby="ajuda-reciclagem" placeholder="Ex.: 4">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-500">kg/mês</span>
+            </div>
+          </div>
+          <button id="botao-calcular" type="submit" class="inline-flex items-center gap-2 rounded-lg bg-floresta px-5 py-3 font-semibold text-white transition hover:bg-natureza disabled:cursor-wait disabled:opacity-60">
+            <i data-lucide="bar-chart-3" class="h-4 w-4" aria-hidden="true"></i><span>Calcular impacto</span>
+          </button>
+        </form>
+      </section>
+
+      <section id="resultado-calculadora" class="hidden" aria-labelledby="titulo-resultado" aria-live="polite">
+        <div class="cartao-base">
+          <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Seu resultado estimado</p>
+          <h2 id="titulo-resultado" class="mt-2 font-titulo text-2xl font-bold text-floresta">Impacto mensal aproximado</h2>
+          <div class="mt-6 grid gap-4 sm:grid-cols-3">
+            <article class="rounded-xl bg-suave/70 p-4">
+              <i data-lucide="bus" class="h-6 w-6 text-floresta" aria-hidden="true"></i>
+              <p class="mt-3 text-xs text-slate-600">Transporte: CO₂ estimado evitado</p>
+              <p id="resultado-transporte" class="mt-1 font-titulo text-xl font-bold text-floresta">—</p>
+            </article>
+            <article class="rounded-xl bg-suave/70 p-4">
+              <i data-lucide="zap" class="h-6 w-6 text-floresta" aria-hidden="true"></i>
+              <p class="mt-3 text-xs text-slate-600">Energia: CO₂ estimado evitado</p>
+              <p id="resultado-energia" class="mt-1 font-titulo text-xl font-bold text-floresta">—</p>
+            </article>
+            <article class="rounded-xl bg-suave/70 p-4">
+              <i data-lucide="recycle" class="h-6 w-6 text-floresta" aria-hidden="true"></i>
+              <p class="mt-3 text-xs text-slate-600">Materiais separados</p>
+              <p id="resultado-reciclagem" class="mt-1 font-titulo text-xl font-bold text-floresta">—</p>
+            </article>
+          </div>
+          <div class="mt-5 rounded-xl border border-floresta/10 p-4">
+            <p class="text-sm text-slate-600">Estimativa combinada de transporte e energia</p>
+            <p id="resultado-total" class="mt-1 font-titulo text-3xl font-bold text-floresta">—</p>
+          </div>
+          <p class="mt-4 text-xs leading-5 text-slate-500">Cálculo didático aproximado, não é medição oficial. Os fatores simplificados não consideram diferenças de veículos, ocupação, região ou matriz elétrica.</p>
+        </div>
+        <div class="cartao-base mt-5">
+          <h3 class="font-titulo text-xl font-semibold text-floresta">Recomendações para você</h3>
+          <ul id="lista-recomendacoes" class="mt-4 space-y-3"></ul>
+        </div>
+      </section>
+
+      <p id="estado-calculadora" class="hidden rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950" role="status" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <footer class="border-t border-floresta/10 bg-white">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-7 sm:flex-row sm:items-center sm:justify-between">
+      <a class="font-titulo font-bold text-floresta" href="../index.html">EcoLife</a>
+      <p class="text-sm text-slate-600">Pequenas atitudes, grandes mudanças.</p>
+      <a class="text-sm font-semibold text-floresta underline" href="reciclagem.html">Conheça o guia de reciclagem</a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/supabaseClient.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/calculadora.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

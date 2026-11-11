@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aprenda a separar resíduos e pratique com o quiz de reciclagem EcoLife.">
+  <title>Guia de reciclagem | EcoLife</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { floresta: '#174D36', natureza: '#65A66A', suave: '#DDF0D7', creme: '#F5F4EA' },
+      fontFamily: { titulo: ['Poppins', 'sans-serif'], texto: ['Inter', 'sans-serif'] }
+    } } };
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="min-h-screen bg-creme font-texto text-slate-800 antialiased">
+  <header class="border-b border-floresta/10 bg-white/95">
+    <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label="Navegação principal">
+      <a class="flex items-center gap-2 font-titulo text-xl font-bold text-floresta" href="../index.html" aria-label="EcoLife, página inicial"><i data-lucide="leaf" class="h-6 w-6" aria-hidden="true"></i><span>EcoLife</span></a>
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <a class="font-semibold text-floresta hover:underline" href="../index.html">Início</a>
+        <a class="font-semibold text-floresta hover:underline" href="calculadora.html">Calculadora</a>
+        <div id="auth-menu" class="flex flex-wrap items-center gap-3" aria-live="polite"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bg-floresta px-5 py-14 text-white sm:py-20">
+      <div class="mx-auto max-w-6xl">
+        <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold"><i data-lucide="recycle" class="h-4 w-4" aria-hidden="true"></i>Separar é o primeiro passo</p>
+        <h1 class="mt-5 max-w-3xl font-titulo text-4xl font-bold sm:text-5xl">Guia prático de reciclagem</h1>
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-white/85">Pesquise um resíduo, confira a cor de referência e veja se ele é reciclável, compostável ou precisa de um ponto especial.</p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-5 py-12" aria-labelledby="titulo-cores">
+      <div class="mb-6">
+        <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Código de cores</p>
+        <h2 id="titulo-cores" class="mt-2 font-titulo text-2xl font-bold text-floresta">Cores das lixeiras</h2>
+        <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">Referência do padrão de cores da Resolução CONAMA nº 275/2001. A disponibilidade da coleta e a aceitação de materiais podem variar por município e cooperativa.</p>
+      </div>
+      <div id="lista-cores" class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5"></div>
+      <p class="mt-3 text-xs text-slate-500">Consulte a <a class="font-semibold underline" href="https://conama.mma.gov.br/images/conteudo/LivroConama.pdf" target="_blank" rel="noopener noreferrer">Resolução CONAMA nº 275/2001</a>.</p>
+    </section>
+
+    <section class="bg-white py-12" aria-labelledby="titulo-busca">
+      <div class="mx-auto max-w-6xl px-5">
+        <div class="mb-6">
+          <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Consulte um material</p>
+          <h2 id="titulo-busca" class="mt-2 font-titulo text-2xl font-bold text-floresta">O que fazer com cada resíduo?</h2>
+        </div>
+        <div class="max-w-xl">
+          <label for="busca-residuo" class="mb-1 block text-sm font-semibold">Buscar por tipo de resíduo</label>
+          <div class="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 focus-within:border-natureza focus-within:ring-2 focus-within:ring-natureza/20">
+            <i data-lucide="search" class="h-5 w-5 text-slate-500" aria-hidden="true"></i>
+            <input id="busca-residuo" type="search" class="w-full border-0 py-3 outline-none" placeholder="Ex.: garrafa PET, pilha, papelão" autocomplete="off">
+          </div>
+        </div>
+        <div id="filtros-residuos" class="mt-4 flex flex-wrap gap-2" aria-label="Filtrar tipos de resíduo">
+          <button type="button" data-filtro="todos" aria-pressed="true" class="filtro-residuo rounded-full bg-floresta px-4 py-2 text-sm font-semibold text-white">Todos</button>
+          <button type="button" data-filtro="reciclavel" aria-pressed="false" class="filtro-residuo rounded-full border border-floresta/20 bg-white px-4 py-2 text-sm font-semibold text-floresta">Recicláveis</button>
+          <button type="button" data-filtro="nao-reciclavel" aria-pressed="false" class="filtro-residuo rounded-full border border-floresta/20 bg-white px-4 py-2 text-sm font-semibold text-floresta">Não recicláveis</button>
+          <button type="button" data-filtro="compostavel" aria-pressed="false" class="filtro-residuo rounded-full border border-floresta/20 bg-white px-4 py-2 text-sm font-semibold text-floresta">Compostáveis</button>
+          <button type="button" data-filtro="especial" aria-pressed="false" class="filtro-residuo rounded-full border border-floresta/20 bg-white px-4 py-2 text-sm font-semibold text-floresta">Descarte especial</button>
+        </div>
+        <p id="estado-residuos" class="mt-5 text-sm text-slate-600" role="status" aria-live="polite">Carregando guia...</p>
+        <div id="lista-residuos" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-5 py-14" aria-labelledby="titulo-quiz">
+      <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-natureza">Aprenda brincando</p>
+          <h2 id="titulo-quiz" class="mt-2 font-titulo text-3xl font-bold text-floresta">Quiz da reciclagem</h2>
+          <p class="mt-3 leading-7 text-slate-600">Responda cinco perguntas rápidas e veja sua pontuação no final.</p>
+        </div>
+        <div class="cartao-base" aria-live="polite">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <p id="quiz-progresso" class="text-sm font-semibold text-natureza">Pronto para começar?</p>
+            <p id="quiz-pontos" class="text-sm font-bold text-floresta">Pontos: 0</p>
+          </div>
+          <div id="quiz-area" class="mt-5 hidden">
+            <h3 id="quiz-pergunta" class="font-titulo text-lg font-semibold text-floresta"></h3>
+            <div id="quiz-opcoes" class="mt-4 grid gap-2"></div>
+            <p id="quiz-feedback" class="mt-4 min-h-6 text-sm font-semibold" role="status"></p>
+            <button id="quiz-proxima" type="button" class="mt-3 hidden rounded-lg bg-floresta px-4 py-2 font-semibold text-white hover:bg-natureza">Próxima pergunta</button>
+          </div>
+          <button id="quiz-iniciar" type="button" class="mt-5 rounded-lg bg-natureza px-5 py-3 font-semibold text-white hover:bg-floresta">Iniciar quiz</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-floresta/10 bg-white">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-7 sm:flex-row sm:items-center sm:justify-between">
+      <a class="font-titulo font-bold text-floresta" href="../index.html">EcoLife</a>
+      <p class="text-sm text-slate-600">Separe corretamente e confirme as regras da coleta local.</p>
+      <a class="text-sm font-semibold text-floresta underline" href="calculadora.html">Ir para a calculadora</a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/supabaseClient.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
